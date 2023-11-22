@@ -160,7 +160,7 @@ void MainWindow::updateFieldOpponentColor()
 {
     std::cout << fieldOpponent[0][0] << std::endl;
 
-    // Iterate through the field vector
+    // Iterate through the field vect
     for (int i = 1; i <= fieldOpponent.size(); i++) {
         for (int j = 1; j <= fieldOpponent[i-1].size(); j++) {
             // Check if the value in the field is 1

@@ -17,6 +17,8 @@ constexpr int PORT = 12346;
 constexpr int BUFFER_SIZE = 1024;
 int countClients = 0;
 std::vector<std::vector<int>> *playersFields = new std::vector<std::vector<int>>();
+
+
 // std::vector<int*> *playersFieldsPlain = new std::vector<int*>();
 int** playersFieldsPlain = new int*[2];
 
@@ -45,8 +47,13 @@ void handleClient(int clientSocket) {
     {
         std::lock_guard<std::mutex> lock(countClientsMutex);
         countClients++;
-        std::cout<< "clearing the field " << std::endl;
-        playersFields[currentClient].clear();       
+        // 
+        // if(!playersFields[currentClient].empty()){
+        //     playersFields[currentClient].clear();
+        //     std::cout<< "after clearing the field " << std::endl;
+
+        // }
+               
     }
 
     // Send 1 or 0 if client is going first or second
@@ -83,6 +90,7 @@ void handleClient(int clientSocket) {
             continue;
         } else {
             for(int i = 0; i < 10*10; i++){
+                std::cout<< "recv opponents field " << flatArray[i] << std::endl;
                 if((flatArray[i] == playersFieldsPlain[opponent][i] == 1)){
                     hits[i] = 1;
                     
@@ -113,6 +121,7 @@ void handleClient(int clientSocket) {
 
         // Echo the message back to the client
         send(clientSocket, flatArray, 10 * 10 * sizeof(int), 0);
+        
         delete[] flatArray;
     }
 
@@ -122,11 +131,12 @@ void handleClient(int clientSocket) {
     {
         std::lock_guard<std::mutex> lock(consoleMutex);
         std::cout << "Client " << clientSocket << " disconnected." << std::endl;
+        std::cout<< "clearing the field " << std::endl;
     }
         {
         std::lock_guard<std::mutex> lock(countClientsMutex);
         countClients--;
-        
+        playersFields[currentClient].clear();
     }
 }
 
