@@ -83,14 +83,16 @@ void handleClient(int clientSocket) {
                     playersFields[currentClient].push_back(row);
                 }
             }
-            int* arr1 = new int[10*10];
-            playersFieldsPlain[currentClient] = arr1;
+
+            playersFieldsPlain[currentClient] = new int[10*10];
+            std::memcpy(playersFieldsPlain[currentClient], flatArray, 10 * 10 * sizeof(int));
+            std::cout << playersFieldsPlain[currentClient][0] << std::endl;
             // delete[] arr1;
 
             continue;
         } else {
             for(int i = 0; i < 10*10; i++){
-                std::cout<< "recv opponents field " << flatArray[i] << std::endl;
+                std::cout<< "recv opponents field " << playersFieldsPlain[opponent][i] << std::endl;
                 if((flatArray[i] == playersFieldsPlain[opponent][i] == 1)){
                     hits[i] = 1;
                     
