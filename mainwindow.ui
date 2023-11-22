@@ -14,44 +14,12 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="button_clickMe">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>490</y>
-      <width>89</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Click Me!</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_greeting">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>470</y>
-      <width>181</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="text">
-     <string>Should be greeting</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
       <x>60</x>
       <y>70</y>
-      <width>331</width>
+      <width>381</width>
       <height>252</height>
      </rect>
     </property>
@@ -785,7 +753,7 @@
      <rect>
       <x>710</x>
       <y>70</y>
-      <width>331</width>
+      <width>381</width>
       <height>251</height>
      </rect>
     </property>
@@ -1547,7 +1515,7 @@
      <x>0</x>
      <y>0</y>
      <width>1159</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
